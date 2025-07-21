@@ -1,0 +1,71 @@
+import java.util.Scanner;
+
+public class QuizApp {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String correctUsername = "Divya";
+        String correctPassword = "1234";
+
+        System.out.println("----- Login -----");
+        System.out.print("Enter username: ");
+        String username = sc.nextLine();
+        System.out.print("Enter password: ");
+        String password = sc.nextLine();
+
+        if (!username.equals(correctUsername) || !password.equals(correctPassword)) {
+            System.out.println("Invalid credentials! Exiting...");
+            return;
+        }
+
+        System.out.println("\nLogin successful!\n");
+
+        
+        int totalQuestions = 3;
+        int score = 0;
+
+        System.out.println("----- Quiz Start -----");
+
+        System.out.println("\nQ1. What is the capital of India?");
+        System.out.println("A. Mumbai\nB. New Delhi\nC. Bangalore\nD. Chennai");
+        System.out.print("Your answer: ");
+        String answer1 = sc.nextLine();
+        if (answer1.equalsIgnoreCase("B")) {
+            score++;
+        }
+
+        System.out.println("\nQ2. Who developed Java?");
+        System.out.println("A. James Gosling\nB. Dennis Ritchie\nC. Bjarne Stroustrup\nD. Guido van Rossum");
+        System.out.print("Your answer: ");
+        String answer2 = sc.nextLine();
+        if (answer2.equalsIgnoreCase("A")) {
+            score++;
+        }
+
+        System.out.println("\nQ3. Which data type is used to create a variable that should store text?");
+        System.out.println("A. myString\nB. string\nC. String\nD. Txt");
+        System.out.print("Your answer: ");
+        String answer3 = sc.nextLine();
+        if (answer3.equalsIgnoreCase("C")) {
+            score++;
+        }
+
+       
+        double percentage = ((double) score / totalQuestions) * 100;
+
+     
+        System.out.println("\n----- Result -----");
+        System.out.println("You scored " + score + " out of " + totalQuestions + ".");
+        System.out.printf("Your percentage: %.2f%%\n", percentage);
+
+        if (percentage == 100) {
+            System.out.println("Excellent! You passed with flying colors!");
+        } else if (percentage >= 66.67) {
+            System.out.println("Good job! You passed.");
+        } else {
+            System.out.println("You failed. Better luck next time!");
+        }
+
+        sc.close();
+    }
+}
